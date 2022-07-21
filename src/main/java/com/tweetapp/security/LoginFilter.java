@@ -40,20 +40,12 @@ public class LoginFilter extends OncePerRequestFilter {
 
         var authenticated = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(username, password));
-        // Cookie refreshToken = new Cookie("refreshTokenLatest",
-        // createJwtRefreshToken(authenticated));
-        // refreshToken.setMaxAge(60 * 60 * 24 * 30);
-        // refreshToken.setHttpOnly(true);
-        // refreshToken.setPath(request.getRequestURI());
+        
         response.setHeader(HttpHeaders.AUTHORIZATION, createJwtToken(authenticated));
 
-        // response.addCookie(refreshToken);
+   
     }
-    // private String createJwtRefreshToken(Authentication authenticated) {
-    // User user = (User) authenticated.getPrincipal();
-    // return jwtHelper.createToken(user.getUsername(), Map.of("roles",
-    // ""),Instant.now().plus(30, ChronoUnit.DAYS));
-    // }
+    
 
     private String createJwtToken(Authentication authenticated) {
         User user = (User) authenticated.getPrincipal();
