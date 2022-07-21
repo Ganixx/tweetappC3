@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tweetapp.entity.AppUser;
 import com.tweetapp.exception.InvalidOtpException;
 import com.tweetapp.exception.UserAlreadyExsists;
+import com.tweetapp.model.AppUserRequestDto;
 import com.tweetapp.model.AppUserResponseDto;
 import com.tweetapp.model.ForgotPassword;
 import com.tweetapp.model.OutputDto;
@@ -48,7 +48,7 @@ public class Guest {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<OutputDto<AppUserResponseDto>> signUp(@Valid @RequestBody AppUser user) {
+    public ResponseEntity<OutputDto<AppUserResponseDto>> signUp(@Valid @RequestBody AppUserRequestDto user) {
         OutputDto<AppUserResponseDto> outputDto = new OutputDto<>();
         try {
             outputDto.setData(appUserService.createUser(user));

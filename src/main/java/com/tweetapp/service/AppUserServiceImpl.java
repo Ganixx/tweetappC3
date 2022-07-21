@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.tweetapp.entity.AppUser;
 import com.tweetapp.exception.InvalidOtpException;
 import com.tweetapp.exception.UserAlreadyExsists;
+import com.tweetapp.model.AppUserRequestDto;
 import com.tweetapp.model.AppUserResponseDto;
 import com.tweetapp.model.FollowDto;
 import com.tweetapp.model.ForgotPassword;
@@ -36,7 +37,16 @@ public class AppUserServiceImpl implements AppUserService {
     }
 
     @Override
-    public AppUserResponseDto createUser(AppUser user) throws InvalidOtpException, UserAlreadyExsists {
+    public AppUserResponseDto createUser(AppUserRequestDto userReq) throws InvalidOtpException, UserAlreadyExsists {
+        AppUser user = new AppUser();
+        user.setEmail(userReq.getEmail());
+        user.setLoginId(userReq.getLoginId());
+        user.setPassword(userReq.getPassword());
+        user.setFirstName(userReq.getFirstName());
+        user.setLastName(userReq.getLastName());
+        user.setContactNumber(userReq.getContactNumber());
+        user.setImage(userReq.getImage());
+        user.setOtp(userReq.getOtp());
         if (Boolean.FALSE.equals(otpService.verifyOtp(user.getEmail(), user.getOtp()))) {
             throw new InvalidOtpException("Invalid OTP");
         }
@@ -54,7 +64,6 @@ public class AppUserServiceImpl implements AppUserService {
         } catch (DuplicateKeyException e) {
             throw new UserAlreadyExsists("User already exists with this email id or login id ");
         }
-        createdUser.setPassword(null);
         return responseDto;
     }
 

@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import com.tweetapp.entity.AppUser;
 import com.tweetapp.exception.InvalidOtpException;
 import com.tweetapp.exception.UserAlreadyExsists;
+import com.tweetapp.model.AppUserRequestDto;
 import com.tweetapp.model.AppUserResponseDto;
 import com.tweetapp.model.FollowDto;
 import com.tweetapp.model.ForgotPassword;
@@ -15,7 +16,7 @@ import com.tweetapp.model.OutputDto;
 public interface AppUserService {
     public List<AppUser> getAllAppUsers();
 
-    public AppUserResponseDto createUser(AppUser user) throws InvalidOtpException, UserAlreadyExsists;
+    public AppUserResponseDto createUser(AppUserRequestDto userReq) throws InvalidOtpException, UserAlreadyExsists;
 
     public Boolean existsByLoginId(String loginId) throws UserAlreadyExsists;
 
