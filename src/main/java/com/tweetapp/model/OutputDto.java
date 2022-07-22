@@ -13,5 +13,6 @@ public class OutputDto<T> {
     private boolean error;
     private String errorMessage;
     private HttpStatus httpStatus;
+    private boolean typeOfPage;
     private T data;
 }

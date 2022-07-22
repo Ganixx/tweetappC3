@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,8 +35,39 @@ public class AppUserServiceImpl implements AppUserService {
     private final PasswordEncoder passwordEncoder;
     private final OtpService otpService;
 
-    public List<AppUser> getAllAppUsers() {
-        return appUserRepo.findAll();
+    public OutputDto<Page<AppUserResponseDto>> getAllAppUsers(int page, int size) {
+        OutputDto<Page<AppUserResponseDto>> output = new OutputDto<>();
+        try
+        {
+            
+            Pageable paging = PageRequest.of(page, size);
+            output.setHttpStatus(HttpStatus.OK);
+            output.setData(appUserRepo.customFindAll(paging));
+            output.setError(false);
+            output.setErrorMessage("");
+            output.setTypeOfPage(true);
+            return output;
+        }
+        catch(IllegalArgumentException e){
+            log.error("Error in getAllAppUsers: {}", e.getMessage(),e);
+            output.setHttpStatus(HttpStatus.BAD_REQUEST);
+            output.setData(null);
+            output.setError(true);
+            output.setErrorMessage(e.getMessage());
+            output.setTypeOfPage(false);
+            return output;
+        }
+        catch(Exception e)
+        {
+            log.error("Error in getAllAppUsers: {}", e.getMessage(),e);
+            output.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+            output.setData(null);
+            output.setError(true);
+            output.setErrorMessage(e.getMessage());
+            output.setTypeOfPage(false);
+            return output;
+        }
+       
     }
 
     @Override
