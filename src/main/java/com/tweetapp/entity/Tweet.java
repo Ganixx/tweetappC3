@@ -24,12 +24,11 @@ public class Tweet {
     @Id
     private String id;
     private Double version = 1.0;
+    private String loginId;
     @NotBlank(message = "tweetDescription is mandatory")
-    @Size(min = 1, max = 150, message = "tweetDescription must be between 1 and 150 characters")
+    @Size(min = 1, max = 150, message = "tweetDescription must be between 1 and 144 characters")
     private String tweetDescription;
     private String tweetImage;
-    @NotBlank(message = "loginId is mandatory")
-    private String loginId;
     @Indexed(name = "tweet_created_date_index")
     private Date createdDate;
     private Date modifiedDate;
@@ -38,5 +37,6 @@ public class Tweet {
     private Set<String> retweets = new HashSet<>();
     @TextIndexed
     private Set<String> hashtags = new HashSet<>();
+    private Set<String> mentions = new HashSet<>();
     
 }

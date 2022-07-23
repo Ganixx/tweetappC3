@@ -1,9 +1,12 @@
 package com.tweetapp.exception;
 
-public class UserAlreadyExsists extends Exception {
+public class AppUserNotFoundException extends Exception {
     private static final long serialVersionUID = 1L;
 
-    public UserAlreadyExsists(String message) {
+    public AppUserNotFoundException(String message) {
         super(message);
     }
 }
+    
+
+

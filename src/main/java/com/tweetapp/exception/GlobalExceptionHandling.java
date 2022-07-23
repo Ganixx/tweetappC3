@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandling extends ResponseEntityExceptionHandler {
-
+    
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<OutputDto<String>> handleExceptions( MethodArgumentTypeMismatchException exception, Principal principal) {
         OutputDto<String> response = new OutputDto<>();
@@ -25,6 +25,16 @@ public class GlobalExceptionHandling extends ResponseEntityExceptionHandler {
         log.error("Invalid request body for parameter " + exception.getParameter().getParameterName()+" by user "+principal.getName(),exception);
         response.setError(true);
         response.setErrorMessage(message);
+        return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(TweetNotFoundException.class)
+    public ResponseEntity<OutputDto<String>> handleTweetNotFoundException( TweetNotFoundException exception, Principal principal) {
+        OutputDto<String> response = new OutputDto<>();
+        log.error("""
+                Tweet not found for user: {}
+                """, principal.getName(), exception);
+        response.setError(true);
+        response.setErrorMessage(exception.getMessage());
         return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
 }

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tweetapp.exception.InvalidOtpException;
-import com.tweetapp.exception.UserAlreadyExsists;
+import com.tweetapp.exception.UserAlreadyExsistsException;
 import com.tweetapp.model.AppUserRequestDto;
 import com.tweetapp.model.AppUserResponseDto;
 import com.tweetapp.model.ForgotPassword;
@@ -60,7 +60,7 @@ public class Guest {
             outputDto.setError(true);
             outputDto.setData(null);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(outputDto);
-        } catch (UserAlreadyExsists e) {
+        } catch (UserAlreadyExsistsException e) {
             outputDto.setErrorMessage(e.getMessage());
             outputDto.setError(true);
             outputDto.setData(null);
@@ -107,7 +107,7 @@ public class Guest {
         try {
             appUserService.existsByEmail(email);
             return ResponseEntity.ok().body(false);
-        } catch (UserAlreadyExsists e) {
+        } catch (UserAlreadyExsistsException e) {
             log.error(e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.CONFLICT).body(true);
         }
@@ -118,7 +118,7 @@ public class Guest {
         try {
             appUserService.existsByLoginId(loginId);
             return ResponseEntity.ok().body(false);
-        } catch (UserAlreadyExsists e) {
+        } catch (UserAlreadyExsistsException e) {
             log.error(e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.CONFLICT).body(true);
         }

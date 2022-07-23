@@ -4,8 +4,11 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -21,8 +24,11 @@ public class Comment {
     private String id;
     private String loginId;
     private Double version = 1.0;
+    @Size(min = 1, max = 150, message = "tweetDescription must be between 1 and 144 characters")
+    private String reply;
     @Indexed(name = "tweet_created_date_index")
     private Date createdDate;
-    private Date modifiedDate;
     private Set<String> likes = new HashSet<>();
+    @TextIndexed
+    private Set<String> hashtags = new HashSet<>();
 }

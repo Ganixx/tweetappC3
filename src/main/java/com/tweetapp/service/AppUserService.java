@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.tweetapp.exception.InvalidOtpException;
-import com.tweetapp.exception.UserAlreadyExsists;
+import com.tweetapp.exception.UserAlreadyExsistsException;
 import com.tweetapp.model.AppUserRequestDto;
 import com.tweetapp.model.AppUserResponseDto;
 import com.tweetapp.model.FollowDto;
@@ -16,11 +16,11 @@ import com.tweetapp.model.OutputDto;
 public interface AppUserService {
     public OutputDto<Page<AppUserResponseDto>> getAllAppUsers(int page, int size);
 
-    public AppUserResponseDto createUser(AppUserRequestDto userReq) throws InvalidOtpException, UserAlreadyExsists;
+    public AppUserResponseDto createUser(AppUserRequestDto userReq) throws InvalidOtpException, UserAlreadyExsistsException;
 
-    public Boolean existsByLoginId(String loginId) throws UserAlreadyExsists;
+    public Boolean existsByLoginId(String loginId) throws UserAlreadyExsistsException;
 
-    public Boolean existsByEmail(String email) throws UserAlreadyExsists;
+    public Boolean existsByEmail(String email) throws UserAlreadyExsistsException;
 
     public Boolean updatePassword(ForgotPassword forgotPassword) throws InvalidOtpException, UsernameNotFoundException;
 

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.tweetapp.entity.AppUser;
 import com.tweetapp.exception.InvalidOtpException;
-import com.tweetapp.exception.UserAlreadyExsists;
+import com.tweetapp.exception.UserAlreadyExsistsException;
 import com.tweetapp.model.AppUserRequestDto;
 import com.tweetapp.model.AppUserResponseDto;
 import com.tweetapp.model.FollowDto;
@@ -71,7 +71,7 @@ public class AppUserServiceImpl implements AppUserService {
     }
 
     @Override
-    public AppUserResponseDto createUser(AppUserRequestDto userReq) throws InvalidOtpException, UserAlreadyExsists {
+    public AppUserResponseDto createUser(AppUserRequestDto userReq) throws InvalidOtpException, UserAlreadyExsistsException {
         AppUser user = new AppUser();
         user.setEmail(userReq.getEmail());
         user.setLoginId(userReq.getLoginId());
@@ -96,23 +96,23 @@ public class AppUserServiceImpl implements AppUserService {
             responseDto.setFirstName(createdUser.getFirstName());
             responseDto.setLastName(createdUser.getLastName());
         } catch (DuplicateKeyException e) {
-            throw new UserAlreadyExsists("User already exists with this email id or login id ");
+            throw new UserAlreadyExsistsException("User already exists with this email id or login id ");
         }
         return responseDto;
     }
 
     @Override
-    public Boolean existsByLoginId(String loginId) throws UserAlreadyExsists {
+    public Boolean existsByLoginId(String loginId) throws UserAlreadyExsistsException {
         if (appUserRepo.customExistsByLoginId(loginId).isPresent()) {
-            throw new UserAlreadyExsists("User already exists");
+            throw new UserAlreadyExsistsException("User already exists");
         }
         return false;
     }
 
     @Override
-    public Boolean existsByEmail(String email) throws UserAlreadyExsists {
+    public Boolean existsByEmail(String email) throws UserAlreadyExsistsException {
         if (appUserRepo.customExistsByEmail(email).isPresent()) {
-            throw new UserAlreadyExsists("User already exists");
+            throw new UserAlreadyExsistsException("User already exists");
         }
         return false;
     }
