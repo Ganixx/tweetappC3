@@ -28,4 +28,6 @@ public interface AppUserService {
 
     public OutputDto<List<AppUserResponseDto>> searchUser(String searchText);
 
+    public OutputDto<AppUserResponseDto> findUserbyId(String userId);
+
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
@@ -23,6 +24,8 @@ public class Comment {
     @Id
     private String id;
     private String loginId;
+    @NotBlank(message = "tweetId is mandatory")
+    private String tweetId;
     private Double version = 1.0;
     @Size(min = 1, max = 150, message = "tweetDescription must be between 1 and 144 characters")
     private String reply;

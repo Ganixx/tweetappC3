@@ -37,9 +37,8 @@ public class AppUserServiceImpl implements AppUserService {
 
     public OutputDto<Page<AppUserResponseDto>> getAllAppUsers(int page, int size) {
         OutputDto<Page<AppUserResponseDto>> output = new OutputDto<>();
-        try
-        {
-            
+        try {
+
             Pageable paging = PageRequest.of(page, size);
             output.setHttpStatus(HttpStatus.OK);
             output.setData(appUserRepo.customFindAll(paging));
@@ -47,19 +46,16 @@ public class AppUserServiceImpl implements AppUserService {
             output.setErrorMessage("");
             output.setTypeOfPage(true);
             return output;
-        }
-        catch(IllegalArgumentException e){
-            log.error("Error in getAllAppUsers: {}", e.getMessage(),e);
+        } catch (IllegalArgumentException e) {
+            log.error("Error in getAllAppUsers: {}", e.getMessage(), e);
             output.setHttpStatus(HttpStatus.BAD_REQUEST);
             output.setData(null);
             output.setError(true);
             output.setErrorMessage(e.getMessage());
             output.setTypeOfPage(false);
             return output;
-        }
-        catch(Exception e)
-        {
-            log.error("Error in getAllAppUsers: {}", e.getMessage(),e);
+        } catch (Exception e) {
+            log.error("Error in getAllAppUsers: {}", e.getMessage(), e);
             output.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR);
             output.setData(null);
             output.setError(true);
@@ -67,11 +63,12 @@ public class AppUserServiceImpl implements AppUserService {
             output.setTypeOfPage(false);
             return output;
         }
-       
+
     }
 
     @Override
-    public AppUserResponseDto createUser(AppUserRequestDto userReq) throws InvalidOtpException, UserAlreadyExsistsException {
+    public AppUserResponseDto createUser(AppUserRequestDto userReq)
+            throws InvalidOtpException, UserAlreadyExsistsException {
         AppUser user = new AppUser();
         user.setEmail(userReq.getEmail());
         user.setLoginId(userReq.getLoginId());
@@ -117,23 +114,22 @@ public class AppUserServiceImpl implements AppUserService {
         return false;
     }
 
-
     @Override
-    public String followHelper(FollowDto followDto,String userId) throws UsernameNotFoundException {
+    public String followHelper(FollowDto followDto, String userId) throws UsernameNotFoundException {
         AppUser user = appUserRepo.customExistsByLoginId(userId).orElseThrow(
                 () -> new UsernameNotFoundException("User not found " + userId));
         AppUser follow = appUserRepo.customExistsByLoginId(followDto.getFollowId()).orElseThrow(
                 () -> new UsernameNotFoundException("followId not found " + followDto.getFollowId()));
-        if(followDto.getFollowType().equals(FollowDto.FollowType.FOLLOW)) {
-            if( !user.getFollowing().add(followDto.getFollowId())) {
+        if (followDto.getFollowType().equals(FollowDto.FollowType.FOLLOW)) {
+            if (!user.getFollowing().add(followDto.getFollowId())) {
                 return "Already following the User";
             }
             follow.getFollowers().add(userId);
             appUserRepo.save(user);
             appUserRepo.save(follow);
             return "Successfully followed the User";
-        } else if(followDto.getFollowType().equals(FollowDto.FollowType.UNFOLLOW)){
-            if( !user.getFollowing().remove(followDto.getFollowId())) {
+        } else if (followDto.getFollowType().equals(FollowDto.FollowType.UNFOLLOW)) {
+            if (!user.getFollowing().remove(followDto.getFollowId())) {
                 return "Already unfollowed the User";
             }
             follow.getFollowers().remove(userId);
@@ -147,12 +143,12 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public OutputDto<List<AppUserResponseDto>> searchUser(String searchText) {
         OutputDto<List<AppUserResponseDto>> outputDto = new OutputDto<>();
-        try{
+        try {
             outputDto.setData(appUserRepo.searchByLoginId(searchText).orElse(new ArrayList<>()));
             outputDto.setError(false);
             outputDto.setErrorMessage("");
             outputDto.setHttpStatus(HttpStatus.OK);
-        } catch(Exception e) {
+        } catch (Exception e) {
             log.error(e.getMessage());
             outputDto.setError(true);
             outputDto.setErrorMessage("server error");
@@ -160,9 +156,6 @@ public class AppUserServiceImpl implements AppUserService {
         }
         return outputDto;
     }
-
-    
-   
 
     @Override
     public Boolean updatePassword(ForgotPassword forgotPassword) throws InvalidOtpException, UsernameNotFoundException {
@@ -174,6 +167,37 @@ public class AppUserServiceImpl implements AppUserService {
         appuser.setPassword(passwordEncoder.encode(forgotPassword.getPassword()));
         appUserRepo.save(appuser);
         return true;
+    }
+
+    @Override
+    public OutputDto<AppUserResponseDto> findUserbyId(String userId) {
+        OutputDto<AppUserResponseDto> outputDto = new OutputDto<>();
+        try {
+            AppUserResponseDto appUserResponseDto = new AppUserResponseDto();
+            AppUser appUser = appUserRepo.customExistsByLoginId(userId)
+                    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            appUserResponseDto.setEmail(appUser.getEmail());
+            appUserResponseDto.setLoginId(appUser.getLoginId());
+            appUserResponseDto.setId(appUser.getId());
+            appUserResponseDto.setFirstName(appUser.getFirstName());
+            appUserResponseDto.setLastName(appUser.getLastName());
+            appUserResponseDto.setImage(appUser.getImage());
+            outputDto.setData(appUserResponseDto);
+            outputDto.setError(false);
+            outputDto.setErrorMessage("");
+            outputDto.setHttpStatus(HttpStatus.OK);
+        } catch (UsernameNotFoundException e) {
+            log.error(e.getMessage());
+            outputDto.setError(true);
+            outputDto.setErrorMessage("user name not found");
+            outputDto.setHttpStatus(HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            outputDto.setError(true);
+            outputDto.setErrorMessage("server error");
+            outputDto.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return outputDto;
     }
 
 }

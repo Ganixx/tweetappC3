@@ -37,4 +37,14 @@ public class GlobalExceptionHandling extends ResponseEntityExceptionHandler {
         response.setErrorMessage(exception.getMessage());
         return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(CommentNotFoundException.class)
+    public ResponseEntity<OutputDto<String>> handleCommentNotFoundException( CommentNotFoundException exception, Principal principal) {
+        OutputDto<String> response = new OutputDto<>();
+        log.error("""
+                Comment not found for user: {}
+                """, principal.getName(), exception);
+        response.setError(true);
+        response.setErrorMessage(exception.getMessage());
+        return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
 }

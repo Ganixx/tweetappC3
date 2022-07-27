@@ -50,6 +50,13 @@ public class UserController {
         OutputDto<List<AppUserResponseDto>> result  = appUserService.searchUser(username);
         return ResponseEntity.status(result.getHttpStatus()).body(result);
     }
+
+    @GetMapping("user/{userId}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public ResponseEntity<OutputDto<AppUserResponseDto>> findUserbyId(@PathVariable String userId) {
+        OutputDto<AppUserResponseDto> result  = appUserService.findUserbyId(userId);
+        return ResponseEntity.status(result.getHttpStatus()).body(result);
+    }
   
     
 }
