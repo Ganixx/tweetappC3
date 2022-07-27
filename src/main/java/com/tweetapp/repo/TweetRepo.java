@@ -24,10 +24,5 @@ public interface TweetRepo extends MongoRepository<Tweet, String>{
     @Query(value="{loginId : { $in: ?0 }}",sort = "{createdDate: -1}")
     public Page<TweetResponseDto> tweetsForUserHomePage(Set<String> following,Pageable pageable);
     
-    // @Aggregation(pipeline ={
-    //       "{$lookup: {from: 'users', localField: 'loginId', foreignField: 'loginId', as: 'user' , pipeline: [{$match: {loginId: ?0}}]}}",
-    //       "{$match: { result.0: { $exists: true}}}",
-    //       "{$sort : { createdDate : -1 }}",
-    //   })
-    // public Page<TweetResponseDto> tweetsForUserHomePageAggregation(String principal,Pageable pageable);
+    
 }
