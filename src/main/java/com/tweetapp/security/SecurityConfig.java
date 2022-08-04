@@ -48,7 +48,7 @@ public class SecurityConfig {
     CorsConfigurationSource corsConfigurationSource() 
     {
       CorsConfiguration configuration = new CorsConfiguration();
-      configuration.setAllowedOrigins(Arrays.asList("http://localhost:3001","https://62e64d1f051ac73956ee2db5--helpful-pothos-607833.netlify.app/"));
+      configuration.setAllowedOrigins(Arrays.asList("http://localhost:3001","https://tweetapp1221.netlify.app/"));
       configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));
       configuration.setAllowCredentials(true);
       configuration.setAllowedHeaders(Arrays.asList("*","Content-Type"));
