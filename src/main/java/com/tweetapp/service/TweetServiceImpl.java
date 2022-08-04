@@ -221,17 +221,16 @@ public class TweetServiceImpl implements TweetService {
         }
     }
 
-    
-    
     @Override
-    public OutputDto<Page<TweetResponseDto>> getTweetOfUser(String principal,String userIdFromRequest, int page, int size)
+    public OutputDto<Page<TweetResponseDto>> getTweetOfUser(String principal, String userIdFromRequest, int page,
+            int size)
             throws AppUserNotFoundException, TweetNotFoundException {
-                OutputDto<Page<TweetResponseDto>> output = new OutputDto<>();
+        OutputDto<Page<TweetResponseDto>> output = new OutputDto<>();
         try {
             Pageable pageable = PageRequest.of(page, size);
             AppUser user = appUserRepo.customExistsByLoginId(userIdFromRequest).orElseThrow(
-                () -> new UsernameNotFoundException("User not found " + userIdFromRequest));
-            Page<TweetResponseDto>  tweetPage = tweetRepo.allTweetsOfuser(user.getLoginId(), pageable);
+                    () -> new UsernameNotFoundException("User not found " + userIdFromRequest));
+            Page<TweetResponseDto> tweetPage = tweetRepo.allTweetsOfuser(user.getLoginId(), pageable);
             tweetPage.getContent().stream().forEach(tweet -> {
                 tweet.setIsLiked(tweet.getLikes().contains(principal));
                 tweet.setLikeCount(tweet.getLikes().size());
@@ -321,7 +320,7 @@ public class TweetServiceImpl implements TweetService {
         try {
             Pageable pageable = PageRequest.of(page, size);
             AppUser user = appUserRepo.customExistsByLoginId(principal).orElseThrow(
-                () -> new UsernameNotFoundException("User not found " + principal));
+                    () -> new UsernameNotFoundException("User not found " + principal));
             Page<TweetResponseDto> tweetPage = tweetRepo.tweetsForUserHomePage(user.getFollowing(), pageable);
             tweetPage.getContent().stream().forEach(tweet -> {
                 tweet.setIsLiked(tweet.getLikes().contains(principal));

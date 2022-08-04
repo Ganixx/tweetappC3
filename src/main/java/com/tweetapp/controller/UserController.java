@@ -1,8 +1,6 @@
 package com.tweetapp.controller;
 
-
 import java.security.Principal;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -20,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tweetapp.model.AppUserResponseDto;
 import com.tweetapp.model.FollowDto;
 import com.tweetapp.model.OutputDto;
+import com.tweetapp.model.SearchAppUserResponseDto;
 import com.tweetapp.service.AppUserService;
 
 import lombok.RequiredArgsConstructor;
@@ -32,31 +31,41 @@ public class UserController {
 
     @GetMapping("/users/all")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<OutputDto<Page<AppUserResponseDto>>> getUsers(@RequestParam(name="page",defaultValue = "0") int page,
-    @RequestParam(name="size",defaultValue = "5") int size) {
-        OutputDto<Page<AppUserResponseDto>> result  = appUserService.getAllAppUsers(page,size);
+    public ResponseEntity<OutputDto<Page<AppUserResponseDto>>> getUsers(
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size) {
+        OutputDto<Page<AppUserResponseDto>> result = appUserService.getAllAppUsers(page, size);
         return ResponseEntity.status(result.getHttpStatus()).body(result);
     }
 
     @PostMapping("/follow")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<String> follow(@Valid @RequestBody FollowDto followDto,Principal principal) {
-        return ResponseEntity.ok().body(appUserService.followHelper(followDto,principal.getName()));
+    public ResponseEntity<String> follow(@Valid @RequestBody FollowDto followDto, Principal principal) {
+        return ResponseEntity.ok().body(appUserService.followHelper(followDto, principal.getName()));
     }
 
     @GetMapping("user/search/{username}")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<OutputDto<List<AppUserResponseDto>>> searchUser(@PathVariable String username) {
-        OutputDto<List<AppUserResponseDto>> result  = appUserService.searchUser(username);
+    public ResponseEntity<OutputDto<Page<SearchAppUserResponseDto>>> searchUser(@PathVariable String username,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size,Principal principal) {
+        OutputDto<Page<SearchAppUserResponseDto>> result = appUserService.searchUser(username,principal.getName(), page, size);
         return ResponseEntity.status(result.getHttpStatus()).body(result);
     }
 
-    @GetMapping("user/{userId}")
+    @GetMapping("profile")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<OutputDto<AppUserResponseDto>> findUserbyId(@PathVariable String userId) {
-        OutputDto<AppUserResponseDto> result  = appUserService.findUserbyId(userId);
+    public ResponseEntity<OutputDto<AppUserResponseDto>> findUserbyId(Principal principal) {
+        OutputDto<AppUserResponseDto> result = appUserService.findUserbyId(principal.getName(), principal.getName());
         return ResponseEntity.status(result.getHttpStatus()).body(result);
     }
-  
-    
+
+    @GetMapping("userById/{username}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public ResponseEntity<OutputDto<AppUserResponseDto>> getUserbyId(@PathVariable String username,
+            Principal principal) {
+        OutputDto<AppUserResponseDto> result = appUserService.findUserbyId(username, principal.getName());
+        return ResponseEntity.status(result.getHttpStatus()).body(result);
+    }
+
 }

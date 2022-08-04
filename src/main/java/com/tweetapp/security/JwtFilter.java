@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,7 +33,8 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        var token = getToken(request);
+        //var token = getToken(request);
+        var token = getTokenFromCookies(request);
         var claims = jwtHelper.parseClaims(token);
         SecurityContextHolder.getContext().setAuthentication(createAuthentication(claims));
         filterChain.doFilter(request, response);
@@ -49,6 +51,16 @@ public class JwtFilter extends OncePerRequestFilter {
         return Optional.ofNullable(request.getHeader(HttpHeaders.AUTHORIZATION))
                 .filter(auth -> auth.startsWith("Bearer "))
                 .map(auth -> auth.replace("Bearer ", ""))
+                .orElseThrow(() -> new BadCredentialsException("Invalid token"));
+    }
+
+
+    private String getTokenFromCookies(HttpServletRequest request){
+        return Optional.ofNullable( Arrays.stream(request.getCookies())
+                        .filter(cookie -> cookie.getName().equals("token"))
+                        .map(Cookie::getValue)
+                        .findFirst()
+                        .orElse(null))
                 .orElseThrow(() -> new BadCredentialsException("Invalid token"));
     }
 

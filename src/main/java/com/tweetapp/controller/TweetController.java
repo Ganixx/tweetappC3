@@ -48,6 +48,13 @@ public class TweetController {
         return ResponseEntity.status(result.getHttpStatus()).body(result);
     }
 
+    @PutMapping("{username}/unlike/{id}")
+    public ResponseEntity<OutputDto<Boolean>> unlikeTweet(@PathVariable String username, @PathVariable String id,
+            Principal principal) throws AppUserNotFoundException, TweetNotFoundException {
+        OutputDto<Boolean> result = tweetService.unlikeTweet(id, username, principal.getName());
+        return ResponseEntity.status(result.getHttpStatus()).body(result);
+    }
+
     @DeleteMapping("{username}/delete/{id}")
     public ResponseEntity<OutputDto<Boolean>> deleteTweet(@PathVariable String username, @PathVariable String id,
             Principal principal) throws AppUserNotFoundException, TweetNotFoundException {

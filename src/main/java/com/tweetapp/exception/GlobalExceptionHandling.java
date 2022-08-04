@@ -4,6 +4,7 @@ import java.security.Principal;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
@@ -46,5 +47,14 @@ public class GlobalExceptionHandling extends ResponseEntityExceptionHandler {
         response.setError(true);
         response.setErrorMessage(exception.getMessage());
         return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<OutputDto<String>> badCredentialsException( BadCredentialsException exception) {
+        OutputDto<String> response = new OutputDto<>();
+        log.error("BadCredentialsException");
+        response.setError(true);
+        response.setErrorMessage(exception.getMessage());
+        return  new ResponseEntity<>(response,HttpStatus.UNAUTHORIZED);
     }
 }

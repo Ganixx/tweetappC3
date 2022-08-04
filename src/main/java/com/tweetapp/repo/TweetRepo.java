@@ -21,7 +21,7 @@ public interface TweetRepo extends MongoRepository<Tweet, String>{
     @Query(value="{loginId: ?0}",sort = "{createdDate: -1}")
     public Page<TweetResponseDto> allTweetsOfuser(String loginId,Pageable pageable);
 
-    @Query(value="{loginId : { $in: ?0 }}",sort = "{createdDate: -1}")
+    @Query(value="{loginId : { $in: ?0 }}",sort = "{createdDate: -1}",collation = "{ locale: 'en', strength: 2 }")
     public Page<TweetResponseDto> tweetsForUserHomePage(Set<String> following,Pageable pageable);
     
     

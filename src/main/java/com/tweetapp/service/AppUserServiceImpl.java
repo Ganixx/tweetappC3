@@ -1,8 +1,5 @@
 package com.tweetapp.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +18,7 @@ import com.tweetapp.model.FollowDto;
 import com.tweetapp.model.ForgotPassword;
 import com.tweetapp.model.OutputDto;
 import com.tweetapp.model.Roles;
+import com.tweetapp.model.SearchAppUserResponseDto;
 import com.tweetapp.repo.AppUserRepo;
 
 import lombok.RequiredArgsConstructor;
@@ -121,7 +119,7 @@ public class AppUserServiceImpl implements AppUserService {
         AppUser follow = appUserRepo.customExistsByLoginId(followDto.getFollowId()).orElseThrow(
                 () -> new UsernameNotFoundException("followId not found " + followDto.getFollowId()));
         if (followDto.getFollowType().equals(FollowDto.FollowType.FOLLOW)) {
-            if (!user.getFollowing().add(followDto.getFollowId())) {
+            if (!user.getFollowing().add(follow.getLoginId())) {
                 return "Already following the User";
             }
             follow.getFollowers().add(userId);
@@ -129,9 +127,10 @@ public class AppUserServiceImpl implements AppUserService {
             appUserRepo.save(follow);
             return "Successfully followed the User";
         } else if (followDto.getFollowType().equals(FollowDto.FollowType.UNFOLLOW)) {
-            if (!user.getFollowing().remove(followDto.getFollowId())) {
-                return "Already unfollowed the User";
+            if (!follow.getFollowers().contains(user.getLoginId())) {
+                return "first follow the user before unfollowing";
             }
+            user.getFollowing().remove(follow.getLoginId());
             follow.getFollowers().remove(userId);
             appUserRepo.save(user);
             appUserRepo.save(follow);
@@ -141,10 +140,19 @@ public class AppUserServiceImpl implements AppUserService {
     }
 
     @Override
-    public OutputDto<List<AppUserResponseDto>> searchUser(String searchText) {
-        OutputDto<List<AppUserResponseDto>> outputDto = new OutputDto<>();
+    public OutputDto<Page<SearchAppUserResponseDto>> searchUser(String searchText, String principal, int page,
+            int size) {
+        OutputDto<Page<SearchAppUserResponseDto>> outputDto = new OutputDto<>();
         try {
-            outputDto.setData(appUserRepo.searchByLoginId(searchText).orElse(new ArrayList<>()));
+            Page<SearchAppUserResponseDto> data = appUserRepo.searchByLoginId(searchText, PageRequest.of(page, size));
+            data.getContent().forEach(user -> {
+                if (user.getFollowers() != null) {
+                    user.setYouFollow(user.getFollowers().contains(principal));
+                    user.setFollowers(null);
+                }
+            });
+            outputDto.setData(data);
+            outputDto.setTypeOfPage(true);
             outputDto.setError(false);
             outputDto.setErrorMessage("");
             outputDto.setHttpStatus(HttpStatus.OK);
@@ -170,18 +178,20 @@ public class AppUserServiceImpl implements AppUserService {
     }
 
     @Override
-    public OutputDto<AppUserResponseDto> findUserbyId(String userId) {
+    public OutputDto<AppUserResponseDto> findUserbyId(String userId, String principal) {
         OutputDto<AppUserResponseDto> outputDto = new OutputDto<>();
         try {
             AppUserResponseDto appUserResponseDto = new AppUserResponseDto();
             AppUser appUser = appUserRepo.customExistsByLoginId(userId)
                     .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-            appUserResponseDto.setEmail(appUser.getEmail());
             appUserResponseDto.setLoginId(appUser.getLoginId());
             appUserResponseDto.setId(appUser.getId());
             appUserResponseDto.setFirstName(appUser.getFirstName());
             appUserResponseDto.setLastName(appUser.getLastName());
             appUserResponseDto.setImage(appUser.getImage());
+            appUserResponseDto.setFollowerCount(appUser.getFollowers().size());
+            appUserResponseDto.setFollowingCount(appUser.getFollowing().size());
+            appUserResponseDto.setYouFollow(appUser.getFollowers().contains(principal));
             outputDto.setData(appUserResponseDto);
             outputDto.setError(false);
             outputDto.setErrorMessage("");

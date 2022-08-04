@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -40,12 +40,16 @@ public class LoginFilter extends OncePerRequestFilter {
 
         var authenticated = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(username, password));
-        
-        response.setHeader(HttpHeaders.AUTHORIZATION, createJwtToken(authenticated));
-
-   
+        String token = createJwtToken(authenticated);
+        response.setHeader(HttpHeaders.AUTHORIZATION, token);
+        Cookie cookie = new Cookie("token", token);
+        cookie.setMaxAge(4 * 60 * 60 * 1000);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(false);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        //response.setHeader("Set-Cookie", "token=" + token + "; Max-Age=1800; HttpOnly; Secure; Path=/; SameSite=None;");
     }
-    
 
     private String createJwtToken(Authentication authenticated) {
         User user = (User) authenticated.getPrincipal();
@@ -53,7 +57,7 @@ public class LoginFilter extends OncePerRequestFilter {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
         return jwtHelper.createToken(user.getUsername(), Map.of("roles", rolesString),
-                Instant.now().plus(90, ChronoUnit.MINUTES));
+                Instant.now().plus(4, ChronoUnit.HOURS));
     }
 
     @Override

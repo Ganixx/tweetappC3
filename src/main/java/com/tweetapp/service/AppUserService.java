@@ -1,7 +1,5 @@
 package com.tweetapp.service;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
@@ -12,6 +10,7 @@ import com.tweetapp.model.AppUserResponseDto;
 import com.tweetapp.model.FollowDto;
 import com.tweetapp.model.ForgotPassword;
 import com.tweetapp.model.OutputDto;
+import com.tweetapp.model.SearchAppUserResponseDto;
 
 public interface AppUserService {
     public OutputDto<Page<AppUserResponseDto>> getAllAppUsers(int page, int size);
@@ -26,8 +25,8 @@ public interface AppUserService {
 
     public String followHelper(FollowDto followDto,String userId) throws UsernameNotFoundException;
 
-    public OutputDto<List<AppUserResponseDto>> searchUser(String searchText);
+    public OutputDto<Page<SearchAppUserResponseDto>> searchUser(String searchText,String principal, int page, int size);
 
-    public OutputDto<AppUserResponseDto> findUserbyId(String userId);
+    public OutputDto<AppUserResponseDto> findUserbyId(String userId,String principal);
 
 }

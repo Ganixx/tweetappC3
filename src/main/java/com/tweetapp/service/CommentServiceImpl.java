@@ -60,6 +60,8 @@ public class CommentServiceImpl implements CommentService {
             commentResDto.setReply(postSave.getReply());
             commentResDto.setCreatedDate(postSave.getCreatedDate());
             commentResDto.setLoginId(postSave.getLoginId());
+            tweet.getComments().add(postSave.getId());
+            tweetRepo.save(tweet);
             output.setError(false);
             output.setData(commentResDto);
             output.setHttpStatus(HttpStatus.OK);

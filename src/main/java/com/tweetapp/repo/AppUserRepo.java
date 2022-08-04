@@ -1,6 +1,5 @@
 package com.tweetapp.repo;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tweetapp.entity.AppUser;
 import com.tweetapp.model.AppUserResponseDto;
+import com.tweetapp.model.SearchAppUserResponseDto;
 
 @Repository
 public interface AppUserRepo extends MongoRepository<AppUser, String> {
@@ -29,6 +29,6 @@ public interface AppUserRepo extends MongoRepository<AppUser, String> {
 
    
     @Query(value = "{loginId: {$regex:  /?0/ ,$options: i}} ")
-    public Optional<List<AppUserResponseDto>> searchByLoginId(String search);
+    public Page<SearchAppUserResponseDto> searchByLoginId(String search,Pageable pageable);
 
 }
