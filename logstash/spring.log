@@ -1,0 +1,145 @@
+2022-08-11 07:08:48.789  INFO 9568 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 9568 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:08:48.814  INFO 9568 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:08:49.201  INFO 9568 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.708 seconds (JVM running for 4.216)
+2022-08-11 07:08:52.094 ERROR 9568 --- [main] com.tweetapp.service.TweetServiceImpl    : Exception while getting tweet of user: Cannot invoke "java.util.Set.contains(Object)" because the return value of "com.tweetapp.model.TweetResponseDto.getLikes()" is null
+2022-08-11 07:12:49.641  INFO 6232 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 6232 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:12:49.647  INFO 6232 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:12:50.038  INFO 6232 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.453 seconds (JVM running for 3.731)
+2022-08-11 07:12:52.502 ERROR 6232 --- [main] com.tweetapp.service.TweetServiceImpl    : Exception while getting tweet of user: Cannot invoke "java.util.Set.contains(Object)" because the return value of "com.tweetapp.model.TweetResponseDto.getLikes()" is null
+2022-08-11 07:14:00.311  INFO 8552 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 8552 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:14:00.315  INFO 8552 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:14:00.602  INFO 8552 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.328 seconds (JVM running for 4.042)
+2022-08-11 07:14:03.334 ERROR 8552 --- [main] com.tweetapp.service.TweetServiceImpl    : Exception while getting tweet of user: Cannot invoke "java.util.Set.contains(Object)" because the return value of "com.tweetapp.model.TweetResponseDto.getLikes()" is null
+2022-08-11 07:17:30.603  INFO 9196 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 9196 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:17:30.608  INFO 9196 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:17:31.018  INFO 9196 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.408 seconds (JVM running for 3.716)
+2022-08-11 07:18:24.145  INFO 7132 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 7132 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:18:24.153  INFO 7132 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:18:24.528  INFO 7132 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.586 seconds (JVM running for 3.734)
+2022-08-11 07:29:12.984  INFO 2800 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 2800 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:29:12.990  INFO 2800 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:29:13.342  INFO 2800 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.324 seconds (JVM running for 3.543)
+2022-08-11 07:29:16.010 ERROR 2800 --- [main] com.tweetapp.service.TweetServiceImpl    : Exception while deleting tweet: Cannot invoke "com.tweetapp.repo.TweetRepo.findById(Object)" because "this.tweetRepo" is null
+2022-08-11 07:29:16.080 ERROR 2800 --- [main] com.tweetapp.service.TweetServiceImpl    : Exception while updating tweet: Cannot invoke "com.tweetapp.repo.TweetRepo.findById(Object)" because "this.tweetRepo" is null
+2022-08-11 07:29:16.122 ERROR 2800 --- [main] com.tweetapp.service.TweetServiceImpl    : Exception while getting tweet of user: Cannot invoke "com.tweetapp.repo.AppUserRepo.customExistsByLoginId(String)" because "this.appUserRepo" is null
+2022-08-11 07:29:16.175 ERROR 2800 --- [main] com.tweetapp.service.TweetServiceImpl    : Exception while deleting tweet: Cannot invoke "com.tweetapp.repo.TweetRepo.findById(Object)" because "this.tweetRepo" is null
+2022-08-11 07:33:12.667  INFO 12416 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 12416 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:33:12.673  INFO 12416 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:33:13.058  INFO 12416 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.318 seconds (JVM running for 3.572)
+2022-08-11 07:33:15.924 ERROR 12416 --- [main] com.tweetapp.service.TweetServiceImpl    : Exception while getting tweet of user: User not found ashok
+2022-08-11 07:34:14.628  INFO 7232 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 7232 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:34:14.635  INFO 7232 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:34:15.079  INFO 7232 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.564 seconds (JVM running for 3.747)
+2022-08-11 07:34:17.584 ERROR 7232 --- [main] com.tweetapp.service.TweetServiceImpl    : Exception while getting tweet of user: User not found ashok
+2022-08-11 07:36:05.936  INFO 6020 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 6020 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:36:05.940  INFO 6020 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:36:06.321  INFO 6020 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.396 seconds (JVM running for 3.619)
+2022-08-11 07:37:31.412  INFO 5852 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 5852 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:37:31.418  INFO 5852 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:37:31.845  INFO 5852 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.766 seconds (JVM running for 3.95)
+2022-08-11 07:38:22.110  INFO 6828 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 6828 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:38:22.116  INFO 6828 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:38:22.442  INFO 6828 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.275 seconds (JVM running for 3.581)
+2022-08-11 07:45:42.157  INFO 6760 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 6760 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:45:42.164  INFO 6760 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:45:42.556  INFO 6760 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.507 seconds (JVM running for 3.964)
+2022-08-11 07:45:45.009 ERROR 6760 --- [main] com.tweetapp.service.TweetServiceImpl    : Exception while adding tweet: 
+Strict stubbing argument mismatch. Please check:
+ - this invocation of 'save' method:
+    tweetRepo.save(
+    Tweet(id=null, version=1.0, loginId=ashok, tweetDescription=Hello World, tweetImage=null, createdDate=Thu Aug 11 07:45:44 IST 2022, modifiedDate=Thu Aug 11 07:45:44 IST 2022, likes=[], comments=[], retweets=[], hashtags=[], mentions=[])
+);
+    -> at com.tweetapp.service.TweetServiceImpl.addTweet(TweetServiceImpl.java:56)
+ - has following stubbing(s) with different arguments:
+    1. tweetRepo.save(
+    Tweet(id=1, version=1.0, loginId=ashok, tweetDescription=Hello World, tweetImage=null, createdDate=null, modifiedDate=null, likes=[], comments=[], retweets=[], hashtags=[], mentions=[])
+);
+      -> at com.tweetapp.service.TweetServiceTests.testPostTweet(TweetServiceTests.java:164)
+Typically, stubbing argument mismatch indicates user mistake when writing tests.
+Mockito fails early so that you can debug potential problem easily.
+However, there are legit scenarios when this exception generates false negative signal:
+  - stubbing the same method multiple times using 'given().will()' or 'when().then()' API
+    Please use 'will().given()' or 'doReturn().when()' API for stubbing.
+  - stubbed method is intentionally invoked with different arguments by code under test
+    Please use default or 'silent' JUnit Rule (equivalent of Strictness.LENIENT).
+For more information see javadoc for PotentialStubbingProblem class.
+2022-08-11 07:52:42.834  INFO 8084 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 8084 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:52:42.842  INFO 8084 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:52:43.355  INFO 8084 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.815 seconds (JVM running for 4.095)
+2022-08-11 07:53:04.999  INFO 5712 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 5712 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 07:53:05.003  INFO 5712 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 07:53:05.336  INFO 5712 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 1.416 seconds (JVM running for 3.592)
+2022-08-11 08:10:43.214  INFO 11512 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 11512 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 08:10:43.221  INFO 11512 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 08:10:43.751  INFO 11512 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 1.732 seconds (JVM running for 4.037)
+2022-08-11 08:11:36.816  INFO 8916 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 8916 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 08:11:36.824  INFO 8916 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 08:11:37.284  INFO 8916 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 1.683 seconds (JVM running for 4.319)
+2022-08-11 08:31:56.432  INFO 11184 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 11184 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 08:31:56.435  INFO 11184 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 08:31:56.659  INFO 11184 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.749 seconds (JVM running for 1.912)
+2022-08-11 08:52:03.220  INFO 6748 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 6748 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 08:52:03.222  INFO 6748 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 08:52:03.430  INFO 6748 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.738 seconds (JVM running for 2.01)
+2022-08-11 08:52:48.340  INFO 1192 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 1192 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 08:52:48.343  INFO 1192 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 08:52:48.581  INFO 1192 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.777 seconds (JVM running for 2.019)
+2022-08-11 08:53:48.080  INFO 12008 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 12008 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 08:53:48.083  INFO 12008 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 08:53:48.308  INFO 12008 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.758 seconds (JVM running for 2.041)
+2022-08-11 08:54:23.842  INFO 12744 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 12744 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 08:54:23.844  INFO 12744 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 08:54:24.047  INFO 12744 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.702 seconds (JVM running for 1.852)
+2022-08-11 08:57:24.202  INFO 11228 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 11228 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 08:57:24.206  INFO 11228 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 08:57:24.400  INFO 11228 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.656 seconds (JVM running for 1.875)
+2022-08-11 09:00:51.644  INFO 15036 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 15036 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 09:00:51.647  INFO 15036 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 09:00:51.886  INFO 15036 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.744 seconds (JVM running for 2.073)
+2022-08-11 09:02:16.659  INFO 10364 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 10364 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 09:02:16.663  INFO 10364 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 09:02:16.930  INFO 10364 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.912 seconds (JVM running for 2.084)
+2022-08-11 09:06:29.477  INFO 9284 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 9284 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 09:06:29.481  INFO 9284 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 09:06:29.765  INFO 9284 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.848 seconds (JVM running for 2.147)
+2022-08-11 09:06:31.198 ERROR 9284 --- [main] com.tweetapp.service.AppUserServiceImpl  : User not found
+2022-08-11 09:08:58.367  INFO 3644 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 3644 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 09:08:58.372  INFO 3644 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 09:08:58.674  INFO 3644 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.744 seconds (JVM running for 1.986)
+2022-08-11 09:09:00.091 ERROR 3644 --- [main] com.tweetapp.service.AppUserServiceImpl  : 
+Strict stubbing argument mismatch. Please check:
+ - this invocation of 'customExistsByLoginId' method:
+    appUserRepo.customExistsByLoginId("ramesh");
+    -> at com.tweetapp.service.AppUserServiceImpl.findUserbyId(AppUserServiceImpl.java:185)
+ - has following stubbing(s) with different arguments:
+    1. appUserRepo.customExistsByLoginId("1");
+      -> at com.tweetapp.service.AppUserServiceTests.testFindUserById(AppUserServiceTests.java:151)
+Typically, stubbing argument mismatch indicates user mistake when writing tests.
+Mockito fails early so that you can debug potential problem easily.
+However, there are legit scenarios when this exception generates false negative signal:
+  - stubbing the same method multiple times using 'given().will()' or 'when().then()' API
+    Please use 'will().given()' or 'doReturn().when()' API for stubbing.
+  - stubbed method is intentionally invoked with different arguments by code under test
+    Please use default or 'silent' JUnit Rule (equivalent of Strictness.LENIENT).
+For more information see javadoc for PotentialStubbingProblem class.
+2022-08-11 09:09:23.545  INFO 9352 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 9352 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 09:09:23.549  INFO 9352 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 09:09:23.830  INFO 9352 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.774 seconds (JVM running for 1.957)
+2022-08-11 09:11:09.661  INFO 3904 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 3904 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 09:11:09.664  INFO 3904 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 09:11:09.872  INFO 3904 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.7 seconds (JVM running for 2.036)
+2022-08-11 09:11:11.273 ERROR 3904 --- [main] com.tweetapp.service.AppUserServiceImpl  : Cannot invoke "java.util.Optional.orElseThrow(java.util.function.Supplier)" because the return value of "com.tweetapp.repo.AppUserRepo.customExistsByLoginId(String)" is null
+2022-08-11 09:13:42.703  INFO 13456 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 13456 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 09:13:42.706  INFO 13456 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 09:13:42.932  INFO 13456 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 0.738 seconds (JVM running for 1.943)
+2022-08-11 09:13:44.391 ERROR 13456 --- [main] com.tweetapp.service.AppUserServiceImpl  : User not found
+2022-08-11 09:14:05.763  INFO 3744 --- [main] c.tweetapp.service.AppUserServiceTests   : Starting AppUserServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 3744 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 09:14:05.767  INFO 3744 --- [main] c.tweetapp.service.AppUserServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 09:14:06.213  INFO 3744 --- [main] c.tweetapp.service.AppUserServiceTests   : Started AppUserServiceTests in 1.111 seconds (JVM running for 2.472)
+2022-08-11 09:21:17.207  INFO 11020 --- [main] com.tweetapp.service.TweetServiceTests   : Starting TweetServiceTests using Java 16.0.1 on LAPTOP-0SA1L5L1 with PID 11020 (started by Gouru Ganesh in C:\Users\Gouru Ganesh\Desktop\Component2\tweetapp)
+2022-08-11 09:21:17.211  INFO 11020 --- [main] com.tweetapp.service.TweetServiceTests   : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 09:21:17.432  INFO 11020 --- [main] com.tweetapp.service.TweetServiceTests   : Started TweetServiceTests in 0.741 seconds (JVM running for 1.903)
+2022-08-11 09:21:19.035  INFO 11020 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.tweetapp.service.AppUserServiceTests], using SpringBootContextLoader
+2022-08-11 09:21:19.037  INFO 11020 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.tweetapp.service.AppUserServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-08-11 09:21:19.045  INFO 11020 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-08-11 09:21:19.046  INFO 11020 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@169268a7, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@285c6918, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@78a0ff63, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7c601d50, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@79b2852b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@326d27ac, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4d499d65, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@313f8301, org.springframework.test.context.event.EventPublishingTestExecutionListener@5cc9d3d0, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7c2dfa2, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@661d88a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4b0b64cc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@59ce792e, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4860827a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@404db674]

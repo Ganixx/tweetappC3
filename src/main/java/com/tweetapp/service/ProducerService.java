@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public final class ProducerService {
 
 	private final KafkaTemplate<String, String> kafkaTemplate;
-	private static final String TOPIC = "appLogs";
+	private static final String TOPIC = "tweet";
 
 	public ProducerService(KafkaTemplate<String, String> kafkaTemplate) {
 		this.kafkaTemplate = kafkaTemplate;

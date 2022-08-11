@@ -1,0 +1,89 @@
+version: '3.6'
+
+services:
+  Elasticsearch:
+    image: elasticsearch:7.17.3
+    container_name: elasticsearch
+    restart: always
+    volumes:
+    - elastic_data:/usr/share/elasticsearch/data/
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      discovery.type: single-node    
+    ports:
+    - '9200:9200'
+    - '9300:9300'
+    networks:
+      - tweet_network
+
+  Logstash:
+    image: logstash:7.17.0
+    container_name: logstash
+    volumes:
+    - ./logstash/:/logstash_dir
+    command: logstash -f /logstash_dir/logstash.conf 
+    depends_on:
+      - Elasticsearch
+    ports:
+    - '9600:9600'
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"    
+    networks:
+      - tweet_network
+
+  Kibana:
+    image: kibana:7.17.3
+    container_name: kibana
+    restart: always       
+    ports:
+    - '5601:5601'
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200  
+    depends_on:
+      - Elasticsearch  
+    networks:
+      - tweet_network
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.2.0
+    container_name: Zookeeper
+    ports:
+    - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    networks:
+      - tweet_network  
+
+  kafka:
+    image: confluentinc/cp-kafka:7.2.0
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    networks:
+      - tweet_network 
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      KAFKA_LISTENERS: tweetAppBackend://kafka:9092
+      KAFKA_ADVERTISED_LISTENERS: tweetAppBackend://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: tweetAppBackend:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: tweetAppBackend
+      KAFKA_CREATE_TOPICS: "tweet"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  tweetAppBackend:
+    image: tweetappbackend
+    container_name: tweetappbackend
+    ports:
+      - '8080:8080'  
+    networks:
+      - tweet_network
+    depends_on:
+      - kafka  
+volumes:
+  elastic_data: {}
+  
+networks:
+  tweet_network:
+    driver: bridge
+    name: tweet_network
