@@ -80,6 +80,16 @@ services:
       - tweet_network
     depends_on:
       - kafka  
+
+  tweetAppFrontend:
+    image: tweetappfrontend
+    container_name: tweetappfrontend
+    ports:
+      - '3000:3000'  
+    networks:
+      - tweet_network
+    depends_on:
+      - tweetAppBackend 
 volumes:
   elastic_data: {}
   
