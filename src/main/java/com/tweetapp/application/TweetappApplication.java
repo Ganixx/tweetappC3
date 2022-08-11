@@ -3,11 +3,12 @@ package com.tweetapp.application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 
 @SpringBootApplication
-@EnableAspectJAutoProxy
 @ComponentScan("com.tweetapp")
+@OpenAPIDefinition
 public class TweetappApplication {
 
 	public static void main(String[] args) {

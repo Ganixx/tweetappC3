@@ -61,7 +61,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.cors();
-        http.authorizeRequests().antMatchers("/api/signup/**", "/api/v1.0/tweets/guest/**").permitAll();
+        http.authorizeRequests().antMatchers("/api/signup/**", "/api/v1.0/tweets/guest/**","/swagger-ui.html","/swagger-ui/**","/v3/api-docs/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilterAt(loginFilter, BasicAuthenticationFilter.class);
         http.addFilterAt(jwtFilter, BasicAuthenticationFilter.class);

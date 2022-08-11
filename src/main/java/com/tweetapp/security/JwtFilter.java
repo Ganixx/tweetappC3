@@ -33,7 +33,7 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        //var token = getToken(request);
+        // var token = getToken(request);
         var token = getTokenFromCookies(request);
         var claims = jwtHelper.parseClaims(token);
         SecurityContextHolder.getContext().setAuthentication(createAuthentication(claims));
@@ -54,19 +54,20 @@ public class JwtFilter extends OncePerRequestFilter {
                 .orElseThrow(() -> new BadCredentialsException("Invalid token"));
     }
 
-
-    private String getTokenFromCookies(HttpServletRequest request){
-        return Optional.ofNullable( Arrays.stream(request.getCookies())
-                        .filter(cookie -> cookie.getName().equals("token"))
-                        .map(Cookie::getValue)
-                        .findFirst()
-                        .orElse(null))
+    private String getTokenFromCookies(HttpServletRequest request) {
+        return Optional.ofNullable(Arrays.stream(request.getCookies())
+                .filter(cookie -> cookie.getName().equals("token"))
+                .map(Cookie::getValue)
+                .findFirst()
+                .orElse(null))
                 .orElseThrow(() -> new BadCredentialsException("Invalid token"));
     }
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
         return request.getRequestURI().startsWith("/api/v1.0/tweets/login")
-                || request.getRequestURI().startsWith("/api/v1.0/tweets/guest");
+                || request.getRequestURI().startsWith("/api/v1.0/tweets/guest")
+                || request.getRequestURI().startsWith("/swagger-ui")
+                || request.getRequestURI().startsWith("/v3/api-docs");
     }
 }
