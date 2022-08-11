@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public final class ConsumerService {
-@KafkaListener(topics = "tweet")
-public void consume(String message) {
-		System.out.println("Received Messasge in group - group-id: " + message);
+	@KafkaListener(topics = "tweet")
+	public void consume(String message) {
+		System.out.println("Received Messasge in twitter group: " + message);
 	}
 }
