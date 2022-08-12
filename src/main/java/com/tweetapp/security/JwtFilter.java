@@ -68,6 +68,7 @@ public class JwtFilter extends OncePerRequestFilter {
         return request.getRequestURI().startsWith("/api/v1.0/tweets/login")
                 || request.getRequestURI().startsWith("/api/v1.0/tweets/guest")
                 || request.getRequestURI().startsWith("/swagger-ui")
-                || request.getRequestURI().startsWith("/v3/api-docs");
+                || request.getRequestURI().startsWith("/v3/api-docs")
+                || request.getRequestURI().startsWith("/actuator");
     }
 }

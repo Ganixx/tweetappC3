@@ -48,7 +48,8 @@ public class SecurityConfig {
     CorsConfigurationSource corsConfigurationSource() 
     {
       CorsConfiguration configuration = new CorsConfiguration();
-      configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000","https://tweetapp1221.netlify.app/"));
+      configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000","https://tweetapp1221.netlify.app/",
+      "http://localhost:9090"));
       configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));
       configuration.setAllowCredentials(true);
       configuration.setAllowedHeaders(Arrays.asList("*","Content-Type"));
@@ -61,7 +62,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.cors();
-        http.authorizeRequests().antMatchers("/api/signup/**", "/api/v1.0/tweets/guest/**","/swagger-ui.html","/swagger-ui/**","/v3/api-docs/**").permitAll();
+        http.authorizeRequests().antMatchers("/api/signup/**", "/api/v1.0/tweets/guest/**","/swagger-ui.html","/swagger-ui/**","/actuator/**","/v3/api-docs/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilterAt(loginFilter, BasicAuthenticationFilter.class);
         http.addFilterAt(jwtFilter, BasicAuthenticationFilter.class);

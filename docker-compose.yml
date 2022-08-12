@@ -5,10 +5,10 @@ services:
     image: prom/prometheus:v2.21.0
     container_name: prometheus
     ports:
-      - 9000:9090
+      - 9090:9090
     volumes:
       - ./config/prometheus:/etc/prometheus
-      - prometheus-data:/prometheus
+      - ./prometheus-data:/prometheus
     command: 
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -21,7 +21,7 @@ services:
     image: grafana/grafana:6.7.2
     container_name: grafana
     volumes:
-      - grafana_data:/var/lib/grafana
+      - ./grafana_data:/var/lib/grafana
       - ./config/grafana:/grafana/grafana-enterprise
     ports:
       - 3001:3001

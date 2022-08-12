@@ -33,3 +33,14 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### prometheus ###
+prometheus-data
+
+### grafana ###
+grafana_data
+
+### logstash ###
+logstash
+logs/spring.log
+logstash/spring.log
