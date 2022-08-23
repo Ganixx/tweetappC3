@@ -28,7 +28,6 @@ import com.tweetapp.model.ForgotPassword;
 import com.tweetapp.model.OutputDto;
 import com.tweetapp.service.AppUserService;
 import com.tweetapp.service.OtpService;
-import com.tweetapp.service.ProducerService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,12 +39,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Guest {
     private final AppUserService appUserService;
     private final OtpService otpService;
-    private final ProducerService producerService;
-
-    @PostMapping(value = "/publish")
-    public void sendMessageToKafkaTopic(@RequestParam String message) {
-        producerService.sendMessage(message);
-    }
+   
 
     @PostMapping("/register")
     public ResponseEntity<OutputDto<AppUserResponseDto>> signUp(@Valid @RequestBody AppUserRequestDto user) {
