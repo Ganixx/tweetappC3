@@ -44,3 +44,6 @@ grafana_data
 logstash
 logs/spring.log
 logstash/spring.log
+application.properties
+src/main/resources/application.properties
+src/main/java/com/tweetapp/config/MongoConfig.java
