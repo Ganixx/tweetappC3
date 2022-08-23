@@ -14,8 +14,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Override
     public MongoClient mongoClient() {
-        ConnectionString connectionString = new ConnectionString(
-                "mongodb://ganixx:Hpacer3799@cluster0-shard-00-00.xkyvl.mongodb.net:27017,cluster0-shard-00-01.xkyvl.mongodb.net:27017,cluster0-shard-00-02.xkyvl.mongodb.net:27017/?ssl=true&replicaSet=atlas-uomefy-shard-0&authSource=admin&retryWrites=true&w=majority");
+        ConnectionString connectionString = new ConnectionString();
         MongoClientSettings settings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
                 .build();
