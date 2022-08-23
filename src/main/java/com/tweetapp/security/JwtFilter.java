@@ -12,7 +12,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -33,7 +32,6 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        // var token = getToken(request);
         var token = getTokenFromCookies(request);
         var claims = jwtHelper.parseClaims(token);
         SecurityContextHolder.getContext().setAuthentication(createAuthentication(claims));
@@ -47,13 +45,7 @@ public class JwtFilter extends OncePerRequestFilter {
         return new UsernamePasswordAuthenticationToken(claims.get(Claims.SUBJECT), null, roles);
     }
 
-    private String getToken(HttpServletRequest request) {
-        return Optional.ofNullable(request.getHeader(HttpHeaders.AUTHORIZATION))
-                .filter(auth -> auth.startsWith("Bearer "))
-                .map(auth -> auth.replace("Bearer ", ""))
-                .orElseThrow(() -> new BadCredentialsException("Invalid token"));
-    }
-
+ 
     private String getTokenFromCookies(HttpServletRequest request) {
         return Optional.ofNullable(Arrays.stream(request.getCookies())
                 .filter(cookie -> cookie.getName().equals("token"))

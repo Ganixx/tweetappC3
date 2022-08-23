@@ -29,7 +29,7 @@ import com.tweetapp.repo.AppUserRepo;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest(classes = TweetServiceTests.class)
-public class AppUserServiceTests {
+ class AppUserServiceTests {
 
     @Mock
     private AppUserRepo appUserRepo;

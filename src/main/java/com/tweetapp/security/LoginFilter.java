@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -42,13 +41,7 @@ public class LoginFilter extends OncePerRequestFilter {
                 new UsernamePasswordAuthenticationToken(username, password));
         String token = createJwtToken(authenticated);
         response.setHeader(HttpHeaders.AUTHORIZATION, token);
-        // Cookie cookie = new Cookie("token", token);
-        // cookie.setMaxAge(4 * 60 * 60 * 1000);
-        // cookie.setHttpOnly(true);
-        // cookie.setSecure(false);
-        // cookie.setPath("/");
-        // cookie.setDomain(".helpful-pothos-607833");
-        // response.addCookie(cookie);
+        
         response.setHeader("Set-Cookie", "token=" + token + "; Max-Age=14400000; HttpOnly; Secure; Path=/; SameSite=None;");
     }
 
